@@ -5,7 +5,7 @@
 
 */1 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/index.js
 */1 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/indexprem.js
-#*/1 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/update-prog.js
+25 */1 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/update-prog.js
 
 1,21,41 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/chilevision.js
 6,26,46 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/chilevision_noticias.js
@@ -16,7 +16,7 @@
 0 5,6,7,8 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/canal13-prog.js
 0 4,5,6,7 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/mega-prog.js
 10 5,6,7,8 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/chilevision-prog.js
-10 0,12 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/rt-prog.js
+10 21,22 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/rt-prog.js
 10 4,5,6,7 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/rectv-prog.js
 20 4,5,6,7 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/tvmas-prog.js
 30 4,5,6,7 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/tvn-prog.js
@@ -34,15 +34,7 @@
 2,5,8,11,14,17,20,23,26,29,32,35,38,41,44,47,50,53,56,59 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/canal13.js
 
 */1 * * * * cp /home/deltafoxtrot/69618bae51ea8f44f4d356f892889261.json /home/deltafoxtrot/channels && cp /home/deltafoxtrot/888.json /home/deltafoxtrot/channels
-10 5,6,7,8 * * * cp /home/deltafoxtrot/tareaescuelita13.json /home/deltafoxtrot/channels
-10 4,5,6,7 * * * cp /home/deltafoxtrot/pelota9.json /home/deltafoxtrot/channels
-20 5,6,7,8 * * * cp /home/deltafoxtrot/rtu.json /home/deltafoxtrot/channels
-20 0,12 * * * cp /home/deltafoxtrot/tiosamuel.json /home/deltafoxtrot/channels
-20 4,5,6,7 * * * cp /home/deltafoxtrot/old13.json /home/deltafoxtrot/channels
-30 4,5,6,7 * * * cp /home/deltafoxtrot/masymas.json /home/deltafoxtrot/channels
-40 4,5,6,7 * * * cp /home/deltafoxtrot/tbn7.json /home/deltafoxtrot/channels
-50 4,5,6,7 * * * cp /home/deltafoxtrot/redred.json /home/deltafoxtrot/channels
-
+*/5 * * * cp /home/deltafoxtrot/4f43dd901c609825ca8107062b0c8178.json /home/deltafoxtrot/channels
 
 1 12 * * 0,1,3,4,5,6 cd / && /usr/bin/node /home/deltafoxtrot/Robotini/robotini.js
 0,3,6,10,15,20,30,50 12 * * 2 cd / && /usr/bin/node /home/deltafoxtrot/Robotini/robotini.js
