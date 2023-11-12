@@ -1,4 +1,3 @@
-
 #BORRA LOS COMITS
 0 1 * * * cd /home/deltafoxtrot/channels && git checkout --orphan cleaned-history && git add -A && git commit -am "the first commit" && git branch -D master && git branch -m master && git push -f origin master
 
@@ -11,7 +10,7 @@
 #CREA LOS JSON DE CANALES Y PROGRAMACION Y LOS COPIA A LA CARPETA DEL REPOSITORIO
 */1 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/index.js && cp /home/deltafoxtrot/69618bae51ea8f44f4d356f892889261.json /home/deltafoxtrot/channels && cp /home/deltafoxtrot/888.json /home/deltafoxtrot/channels
 */1 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/indexprem.js
-25 */1 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/update-prog.js && cp /home/deltafoxtrot/4f43dd901c609825ca8107062b0c8178.json /home/deltafoxtrot/channels
+*/1 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/update-prog.js && cp /home/deltafoxtrot/4f43dd901c609825ca8107062b0c8178.json /home/deltafoxtrot/channels
 
 #SCRAPERS QUE EXTRAEN LOS M3U8
 1,21,41 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/chilevision.js
