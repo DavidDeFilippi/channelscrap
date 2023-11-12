@@ -43,7 +43,7 @@ const doScrap = async () => {
       d.setHours(Number(horaSplit[0]));
       d.setMinutes(Number(horaSplit[1]));
       d.setSeconds(0);
-      d = addHours(d, -3);
+      d = addHours(d, -1);
 
       // let n = new Date();
       // n.setDate(n.getDate() + 1);
