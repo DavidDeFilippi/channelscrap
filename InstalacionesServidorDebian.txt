@@ -1,0 +1,34 @@
+#En cuenta Root
+
+apt update
+apt install git
+apt install curl
+curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+
+#verifica si node esta instalado o no
+apt policy nodejs
+
+#instalamos node js
+apt install nodejs
+node -v
+npm -v
+
+#nod vamos a la cuenta deltafoxtrot
+
+su deltafoxtrot
+git clone https://github.com/DavidDeFilippi/channels.git /home/deltafoxtrot/channels
+crear archivo test en /home/deltafoxtrot/channels
+git -C /home/deltafoxtrot/channels add .
+git -C /home/deltafoxtrot/channels commit -m "El Commit"
+git config --global user.email "daviddefilippi@gmail.com"
+git config --global user.name "DavidDeFilippi"
+git -C /home/deltafoxtrot/channels push origin master
+Username for 'https://github.com': DavidDeFilippi
+Password for 'https://DavidDeFilippi@github.com': #F:\
+
+#Si no deja hacer push porque tienes que hacer git pull
+git -C /home/deltafoxtrot/channels pull
+git -C /home/deltafoxtrot/channels push origin master
+
+#Entrar en la carpeta del repositorio y guardar las credenciales de acceso
+git config credential.helper store
