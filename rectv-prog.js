@@ -57,7 +57,7 @@ const doScrap = async () => {
         }
       }
 
-      programacion.push({id: 'chilevision', programa: programas[i], hora: d, updated: new Date().getTime()});
+      programacion.push({id: 'rectv', programa: programas[i], hora: d, updated: new Date().getTime()});
     }
 
     const jsonData = JSON.stringify(programacion);

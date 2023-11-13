@@ -1,3 +1,4 @@
+
 #BORRA LOS COMITS
 0 1 * * * cd /home/deltafoxtrot/channels && git checkout --orphan cleaned-history && git add -A && git commit -am "the first commit" && git branch -D master && git branch -m master && git push -f origin master
 
@@ -5,12 +6,12 @@
 0,5,10,15,20,25,30,35,40,45,50,54 * * * * cd /home/deltafoxtrot/channels && git -C /home/deltafoxtrot/channels add . && git -C /home/deltafoxtrot/channels commit -m "El Commit" && git -C /home/deltafoxtrot/channels push origin master
 
 #ELIMINA EL REPOSITORIO LOCAL Y LO VUELVE A CLONAR
-58 */1 * * * sudo rm -r /home/deltafoxtrot/channels && git clone https://github.com/DavidDeFilippi/channels.git /home/deltafoxtrot/channels && cp /home/deltafoxtrot/69618bae51ea8f44f4d356f892889261.json /home/deltafoxtrot/channels && cp /home/deltafoxtrot/888.json /home/deltafoxtrot/channels && cd /home/deltafoxtrot/channels && git -C /home/deltafoxtrot/channels add . && git -C /home/deltafoxtrot/channels commit -m "El Commit" && git -C /home/deltafoxtrot/channels push origin master
+#58 */1 * * * sudo rm -r /home/deltafoxtrot/channels && git clone https://github.com/DavidDeFilippi/channels.git /home/deltafoxtrot/channels && cp /home/deltafoxtrot/69618bae51ea8f44f4d356f892889261.json /home/deltafoxtrot/channels && cp /home/deltafoxtrot/888.json /home/deltafoxtrot/channels && cd /home/deltafoxtrot/channels && git -C /home/deltafoxtrot/channels add . && git -C /home/deltafoxtrot/channels commit -m "El Commit" && git -C /home/deltafoxtrot/channels push origin master
 
 #CREA LOS JSON DE CANALES Y PROGRAMACION Y LOS COPIA A LA CARPETA DEL REPOSITORIO
-*/1 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/index.js && cp /home/deltafoxtrot/69618bae51ea8f44f4d356f892889261.json /home/deltafoxtrot/channels && cp /home/deltafoxtrot/888.json /home/deltafoxtrot/channels
-*/1 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/indexprem.js
-*/1 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/update-prog.js && cp /home/deltafoxtrot/4f43dd901c609825ca8107062b0c8178.json /home/deltafoxtrot/channels
+0-57/3 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/index.js && cp /home/deltafoxtrot/69618bae51ea8f44f4d356f892889261.json /home/deltafoxtrot/channels && cp /home/deltafoxtrot/888.json /home/deltafoxtrot/channels
+0-57/3 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/indexprem.js
+0-57/3 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/update-prog.js && cp /home/deltafoxtrot/4f43dd901c609825ca8107062b0c8178.json /home/deltafoxtrot/channels
 
 #SCRAPERS QUE EXTRAEN LOS M3U8
 1,21,41 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/chilevision.js
