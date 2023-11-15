@@ -16,7 +16,7 @@ const doScrap = async () => {
   try {
     const page = await browser.newPage();
 
-    const url = 'https://mi.tv/cl/canales/rt-tv-russia-today';
+    const url = 'https://www.gatotv.com/canal/golden_plus';
 
     console.log(await browser.userAgent());
     await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36');
@@ -26,15 +26,23 @@ const doScrap = async () => {
     await new Promise(r => setTimeout(r, 5000));
 
     const programas = await page.$$eval(
-      "#listings > ul > li > a > div.content > h2",
+      ".pelicula > div > div > span, td.pelicula > div > div > a > span",
       els => els.map(e => e.textContent)
     );
 
+    if (programas.length > 0) {
+      programas.shift();
+    }
+
     const horarios = await page.$$eval(
-      "#listings > ul > li > a > div.content > span.time",
+      "table.tbl_EPG > tbody > tr > td:nth-child(1) > div > time",
       els => els.map(e => e.textContent)
     );
-    
+
+    if (horarios.length > 0) {
+      horarios.shift();
+    }
+
     let programacion = [];
 
     for (let i = 0; i < programas.length; i++) {
@@ -45,27 +53,27 @@ const doScrap = async () => {
       d.setSeconds(0);
       // d = addHours(d, -1);
 
-      let n = new Date();
-      n.setDate(n.getDate() + 1);
-      n.setHours(0);
-      n.setMinutes(0);
-      n.setSeconds(0);
-      
-      if (d.getHours() >= n.getHours()) {
-        n.setHours(6);
-        if (d.getHours() < n.getHours()) {
-          d.setDate(d.getDate() +1);
-        }
-      }
+      // let n = new Date();
+      // n.setDate(n.getDate() + 1);
+      // n.setHours(0);
+      // n.setMinutes(0);
+      // n.setSeconds(0);
 
-      programacion.push({id: 'rt', programa: programas[i].replace(/(\r\n|\n|\r|\t)/gm,""), hora: d, updated: new Date().getTime()});
+      // if (d.getHours() >= n.getHours()) {
+      //   n.setHours(6);
+      //   if (d.getHours() < n.getHours()) {
+      //     d.setDate(d.getDate() +1);
+      //   }
+      // }
+
+      programacion.push({id: 'goldenplus', programa: programas[i].replace(/(\r\n|\n|\r|\t)/gm,""), hora: d, updated: new Date().getTime()});
     }
 
-    console.log(programacion);
+    // console.log(programacion);
 
     const jsonData = JSON.stringify(programacion);
 
-    fs.writeFileSync("/home/deltafoxtrot/"+"tiosamuel.json", jsonData);
+    fs.writeFileSync("/home/deltafoxtrot/"+"goldenplus.json", jsonData);
 
     console.log(colores.verde, 'Scrap exitoso\n');
 

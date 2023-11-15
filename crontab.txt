@@ -6,7 +6,7 @@
 0,5,10,15,20,25,30,35,40,45,50,54 * * * * cd /home/deltafoxtrot/channels && git -C /home/deltafoxtrot/channels add . && git -C /home/deltafoxtrot/channels commit -m "El Commit" && git -C /home/deltafoxtrot/channels push origin master
 
 #ELIMINA EL REPOSITORIO LOCAL Y LO VUELVE A CLONAR
-#58 */1 * * * sudo rm -r /home/deltafoxtrot/channels && git clone https://github.com/DavidDeFilippi/channels.git /home/deltafoxtrot/channels && cp /home/deltafoxtrot/69618bae51ea8f44f4d356f892889261.json /home/deltafoxtrot/channels && cp /home/deltafoxtrot/888.json /home/deltafoxtrot/channels && cd /home/deltafoxtrot/channels && git -C /home/deltafoxtrot/channels add . && git -C /home/deltafoxtrot/channels commit -m "El Commit" && git -C /home/deltafoxtrot/channels push origin master
+#58 */1 * * * sudo rm -r /home/deltafoxtrot/channels && git clone https://github.com/DavidDeFilippi/channels.git /home/deltafoxtrot/channels && cp /home/deltafoxtrot/69618bae51ea8f44f4d356f892889261.json /home/deltafoxtrot/channels && cp /home/deltafoxtrot/888.json /home/deltafoxtrot/channels && cd /home/deltafoxtr>
 
 #CREA LOS JSON DE CANALES Y PROGRAMACION Y LOS COPIA A LA CARPETA DEL REPOSITORIO
 0-57/3 * * * * cd / && /usr/bin/node /home/deltafoxtrot/channelstojson/index.js && cp /home/deltafoxtrot/69618bae51ea8f44f4d356f892889261.json /home/deltafoxtrot/channels && cp /home/deltafoxtrot/888.json /home/deltafoxtrot/channels
@@ -31,6 +31,8 @@
 20 4,5,6,7 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/tvmas-prog.js
 30 4,5,6,7 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/tvn-prog.js
 40 4,5,6,7 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/lared-prog.js
+20 0,1 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/goldenplus-prog.js
+25 0,1 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/cinesony-prog.js
 
 #SCRAPERS QUE EXTRAEN VIDEOS EN VIVO EN YOUTUBE
 10 12,16,20,0,4,8 * * * cd / && /usr/bin/node /home/deltafoxtrot/channelscrap/valpo1.js
