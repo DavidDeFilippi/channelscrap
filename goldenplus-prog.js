@@ -26,7 +26,7 @@ const doScrap = async () => {
     await new Promise(r => setTimeout(r, 5000));
 
     const programas = await page.$$eval(
-      ".pelicula > div > div > span, td.pelicula > div > div > a > span",
+      ".pelicula > div > div > span, td.pelicula > div > div > a > span, .caricatura > div > div > span, .caricatura > div > div > a > span",
       els => els.map(e => e.textContent)
     );
 
