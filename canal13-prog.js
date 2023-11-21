@@ -16,7 +16,7 @@ const doScrap = async () => {
   try {
     const page = await browser.newPage();
 
-    const url = 'https://www.13.cl/programacion';
+    const url = 'https://tvdaldia.cl/cartelera-tv/canal-13/';
 
     console.log(await browser.userAgent());
     await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36');
@@ -25,13 +25,13 @@ const doScrap = async () => {
 
     await new Promise(r => setTimeout(r, 5000));
 
-    const horarios = await page.$$eval(
-      "#top > main > div.row > .mod-list:nth-child(1) > div.mod-content > article > time > span",
+    const programas = await page.$$eval(
+      "#programacion-hoy > div > div.ecm-table-cell.image-holder-cell > div.ecm-live-title-holder > span.ecm-live-title",
       els => els.map(e => e.textContent)
     );
 
-    const programas = await page.$$eval(
-      "#top > main > div.row > .mod-list:nth-child(1) > div.mod-content > article > div > h1 > a",
+    const horarios = await page.$$eval(
+      "#programacion-hoy > div > div.ecm-table-cell.image-holder-cell > div.ecm-live-title-holder > span.ecm-live-time",
       els => els.map(e => e.textContent)
     );
 

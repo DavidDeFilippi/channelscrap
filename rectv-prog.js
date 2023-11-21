@@ -34,6 +34,9 @@ const doScrap = async () => {
       "#programacion-hoy > div > div.ecm-table-cell.image-holder-cell > div.ecm-live-title-holder > span.ecm-live-time",
       els => els.map(e => e.textContent)
     );
+
+    horarios.pop();
+    programas.pop();
     
     let programacion = [];
 
@@ -51,7 +54,7 @@ const doScrap = async () => {
       n.setSeconds(0);
 
       if (d.getHours() >= n.getHours()) {
-        n.setHours(5);
+        n.setHours(6);
         if (d.getHours() < n.getHours()) {
           d.setDate(d.getDate() +1);
         }

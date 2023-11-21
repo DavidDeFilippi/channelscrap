@@ -16,7 +16,7 @@ const doScrap = async () => {
   try {
     const page = await browser.newPage();
 
-    const url = 'https://www.mega.cl/programacion/';
+    const url = 'https://tvdaldia.cl/cartelera-tv/mega/';
 
     console.log(await browser.userAgent());
     await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36');
@@ -25,17 +25,13 @@ const doScrap = async () => {
 
     await new Promise(r => setTimeout(r, 5000));
 
-    const d = new Date();
-
-    const currentDayNumber = d.getDay() == 0 ? 7 : d.getDay();
-
     const programas = await page.$$eval(
-      "#day-"+currentDayNumber+" > div.owl-stage-outer > div > div > article  div.title",
+      "#programacion-hoy > div > div.ecm-table-cell.image-holder-cell > div.ecm-live-title-holder > span.ecm-live-title",
       els => els.map(e => e.textContent)
     );
 
     const horarios = await page.$$eval(
-      "#day-"+currentDayNumber+" > div.owl-stage-outer > div > div > article  div.date",
+      "#programacion-hoy > div > div.ecm-table-cell.image-holder-cell > div.ecm-live-title-holder > span.ecm-live-time",
       els => els.map(e => e.textContent)
     );
 

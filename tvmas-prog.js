@@ -16,7 +16,7 @@ const doScrap = async () => {
   try {
     const page = await browser.newPage();
 
-    const url = 'https://www.tvmas.tv/guide';
+    const url = 'https://tvdaldia.cl/cartelera-tv/tv-mas/';
 
     console.log(await browser.userAgent());
     await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36');
@@ -25,15 +25,18 @@ const doScrap = async () => {
 
     await new Promise(r => setTimeout(r, 5000));
 
-    const horarios = await page.$$eval(
-      "#premium > div > div > div > div > div.scheduleSportsItemHour.col-md-2 > ul > li.scheduleSportsItemHourTitle.title",
+    const programas = await page.$$eval(
+      "#programacion-hoy > div > div.ecm-table-cell.image-holder-cell > div.ecm-live-title-holder > span.ecm-live-title",
       els => els.map(e => e.textContent)
     );
 
-    const programas = await page.$$eval(
-      "#premium > div > div > div > div > div.scheduleSportsItemDescription.col-md-7 > div > h3",
+    const horarios = await page.$$eval(
+      "#programacion-hoy > div > div.ecm-table-cell.image-holder-cell > div.ecm-live-title-holder > span.ecm-live-time",
       els => els.map(e => e.textContent)
     );
+
+    programas.pop();
+    horarios.pop();
 
     let programacion = [];
 

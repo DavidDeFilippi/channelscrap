@@ -16,7 +16,7 @@ const doScrap = async () => {
   try {
     const page = await browser.newPage();
 
-    const url = 'https://www.lared.cl/guia-programacion';
+    const url = 'https://tvdaldia.cl/cartelera-tv/la-red/';
 
     console.log(await browser.userAgent());
     await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36');
@@ -24,16 +24,14 @@ const doScrap = async () => {
     await page.goto(url, { waitUntil: 'load', timeout: 50000 });
 
     await new Promise(r => setTimeout(r, 5000));
-
-    const d = new Date();
     
     const programas = await page.$$eval(
-      ".current > div > div.data.child > a > div.texto > p",
+      "#programacion-hoy > div > div.ecm-table-cell.image-holder-cell > div.ecm-live-title-holder > span.ecm-live-title",
       els => els.map(e => e.textContent)
     );
 
     const horarios = await page.$$eval(
-      ".current > div > div.hour.child > p",
+      "#programacion-hoy > div > div.ecm-table-cell.image-holder-cell > div.ecm-live-title-holder > span.ecm-live-time",
       els => els.map(e => e.textContent)
     );
 
