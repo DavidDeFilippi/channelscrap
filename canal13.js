@@ -21,7 +21,7 @@ const doScrap = async () => {
     console.log(await browser.userAgent());
     await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36');
 
-    await page.goto('https://us-central1-canal-13-stream-api.cloudfunctions.net/media/token', { waitUntil: 'load', timeout: 50000 });
+    await page.goto('https://us-central1-canal-13-stream-api.cloudfunctions.net/media/token', { waitUntil: 'load', timeout: 120000 });
 
     const n = await page.$("pre");
     let token = await (await n.getProperty('textContent')).jsonValue();

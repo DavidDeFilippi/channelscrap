@@ -26,12 +26,12 @@ const doScrap = async () => {
     await new Promise(r => setTimeout(r, 5000));
 
     const programas = await page.$$eval(
-      "#programacion-hoy > div > div.ecm-table-cell.image-holder-cell > div.ecm-live-title-holder > span.ecm-live-title",
+      "#programacion-hoy > div > div.cartelera-programa > div.cartelera-programa",
       els => els.map(e => e.textContent)
     );
 
     const horarios = await page.$$eval(
-      "#programacion-hoy > div > div.ecm-table-cell.image-holder-cell > div.ecm-live-title-holder > span.ecm-live-time",
+      "#programacion-hoy > div > div.cartelera-programa > span.cartelera-hora",
       els => els.map(e => e.textContent)
     );
 
@@ -61,11 +61,16 @@ const doScrap = async () => {
       programacion.push({id: 'mega', programa: programas[i], hora: d, updated: new Date().getTime()});
     }
 
-    const jsonData = JSON.stringify(programacion);
+    if(programacion.length > 0){
+      const jsonData = JSON.stringify(programacion);
 
-    fs.writeFileSync("/home/deltafoxtrot/"+"pelota9.json", jsonData);
+      fs.writeFileSync("/home/deltafoxtrot/"+"pelota9.json", jsonData);
 
-    console.log(colores.verde, 'Scrap exitoso\n');
+
+      console.log(colores.verde, 'Scrap exitoso\n');
+    }else{
+      console.log(colores.amarillo, 'No se recopilaron datos de la programacion');
+    }
 
   } catch (e) {
     console.log(colores.rojo, 'ERROR:');

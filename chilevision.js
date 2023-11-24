@@ -36,7 +36,7 @@ const doScrap = async () => {
       }
     });
 
-    await page.goto(url, { waitUntil: 'load', timeout: 50000 }); 
+    await page.goto(url, { waitUntil: 'load', timeout: 120000 }); 
     
     console.log(colores.verde, `\nIngreso completado \n`);
     console.log(colores.amarillo, `\nEsperando scrap \n`);

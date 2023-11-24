@@ -61,13 +61,15 @@ const doScrap = async () => {
       programacion.push({id: 'rt', programa: programas[i].replace(/(\r\n|\n|\r|\t)/gm,""), hora: d, updated: new Date().getTime()});
     }
 
-    console.log(programacion);
+    if(programacion.length > 0){
+      const jsonData = JSON.stringify(programacion);
 
-    const jsonData = JSON.stringify(programacion);
+      fs.writeFileSync("/home/deltafoxtrot/"+"tiosamuel.json", jsonData);
 
-    fs.writeFileSync("/home/deltafoxtrot/"+"tiosamuel.json", jsonData);
-
-    console.log(colores.verde, 'Scrap exitoso\n');
+      console.log(colores.verde, 'Scrap exitoso\n');
+    }else{
+      console.log(colores.amarillo, 'No se recopilaron datos de la programacion');
+    }
 
   } catch (e) {
     console.log(colores.rojo, 'ERROR:');
