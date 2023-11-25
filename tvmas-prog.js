@@ -42,7 +42,7 @@ const doScrap = async () => {
 
     for (let i = 0; i < programas.length; i++) {
       let d = new Date();
-      const horaSplit = horarios[i].slice(0, -4).split(':');
+      const horaSplit = horarios[i].split(':');
       d.setHours(Number(horaSplit[0]));
       d.setMinutes(Number(horaSplit[1]));
       d.setSeconds(0);
@@ -62,6 +62,8 @@ const doScrap = async () => {
 
       programacion.push({id: 'tvmas', programa: programas[i], hora: d, updated: new Date().getTime()});
     }
+
+    // console.log(programacion);
 
     if(programacion.length > 0){
       const jsonData = JSON.stringify(programacion);

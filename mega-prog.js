@@ -35,6 +35,9 @@ const doScrap = async () => {
       els => els.map(e => e.textContent)
     );
 
+    programas.pop();
+    horarios.pop();
+
 
     let programacion = [];
 
@@ -52,7 +55,7 @@ const doScrap = async () => {
       n.setSeconds(0);
 
       if (d.getHours() >= n.getHours()) {
-        n.setHours(4);
+        n.setHours(5);
         if (d.getHours() < n.getHours()) {
           d.setDate(d.getDate() +1);
         }
