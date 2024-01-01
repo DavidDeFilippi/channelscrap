@@ -2,10 +2,10 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 const config = {
-  // headless: 'new', // Set to false if you want to open and see the robot in action
-  headless: false,
+  headless: 'new', // Set to false if you want to open and see the robot in action
+  //headless: false,
   devtools: false, // Open the devtools panel in a non headless mode
-  // executablePath: "chromium-browser",
+  executablePath: "chromium",
 }
 
 const doScrap = async () => {

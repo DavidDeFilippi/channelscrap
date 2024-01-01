@@ -5,7 +5,7 @@ const config = {
   headless: 'new', // Set to false if you want to open and see the robot in action
   // headless: false,
   devtools: false, // Open the devtools panel in a non headless mode
-  executablePath: "chromium-browser",
+  executablePath: "chromium",
 }
 
 const doScrap = async () => {
@@ -61,7 +61,7 @@ const doScrap = async () => {
         }
       }
 
-      programacion.push({id: 'mega', programa: programas[i], hora: d, updated: new Date().getTime()});
+      programacion.push({id: 'mega', programa: programas[i], hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
     }
 
     if(programacion.length > 0){
