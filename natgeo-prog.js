@@ -16,7 +16,7 @@ const doScrap = async () => {
   try {
     const page = await browser.newPage();
 
-    const url = 'https://mi.tv/cl/canales/fox';
+    const url = 'https://mi.tv/pe/canales/national-geographic';
 
     console.log(await browser.userAgent());
     await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36');
@@ -58,15 +58,15 @@ const doScrap = async () => {
         }
       }
 
-      programacion.push({id: 'starchannel', programa: programas[i].replace(/(\r\n|\n|\r|\t)/gm,""), hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
+      programacion.push({id: 'natgeo', programa: programas[i].replace(/(\r\n|\n|\r|\t)/gm,""), hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
     }
 
     // console.log(programacion);
-    
+
     if(programacion.length > 0){
       const jsonData = JSON.stringify(programacion);
 
-      fs.writeFileSync("/home/deltafoxtrot/"+"estrellario.json", jsonData);
+      fs.writeFileSync("/home/deltafoxtrot/"+"natg.json", jsonData);
 
       console.log(colores.verde, 'Scrap exitoso\n');
     }else{

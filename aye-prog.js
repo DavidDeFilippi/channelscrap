@@ -16,7 +16,7 @@ const doScrap = async () => {
   try {
     const page = await browser.newPage();
 
-    const url = 'https://mi.tv/cl/canales/fox';
+    const url = 'https://mi.tv/cl/canales/a-e-mundo';
 
     console.log(await browser.userAgent());
     await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36');
@@ -58,7 +58,7 @@ const doScrap = async () => {
         }
       }
 
-      programacion.push({id: 'starchannel', programa: programas[i].replace(/(\r\n|\n|\r|\t)/gm,""), hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
+      programacion.push({id: 'aye', programa: programas[i].replace(/(\r\n|\n|\r|\t)/gm,""), hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
     }
 
     // console.log(programacion);
@@ -66,7 +66,7 @@ const doScrap = async () => {
     if(programacion.length > 0){
       const jsonData = JSON.stringify(programacion);
 
-      fs.writeFileSync("/home/deltafoxtrot/"+"estrellario.json", jsonData);
+      fs.writeFileSync("/home/deltafoxtrot/"+"aye.json", jsonData);
 
       console.log(colores.verde, 'Scrap exitoso\n');
     }else{
