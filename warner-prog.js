@@ -58,15 +58,15 @@ const doScrap = async () => {
         }
       }
 
-      programacion.push({id: 'warner', programa: programas[i].replace(/(\r\n|\n|\r|\t)/gm,""), hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
+      programacion.push({id: 'warnerhd', programa: programas[i].replace(/(\r\n|\n|\r|\t)/gm,""), hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
     }
 
-    console.log(programacion);
+    // console.log(programacion);
     
     if(programacion.length > 0){
       const jsonData = JSON.stringify(programacion);
 
-      fs.writeFileSync("/home/deltafoxtrot/"+"warner.json", jsonData);
+      fs.writeFileSync("/home/deltafoxtrot/"+"warnerhd.json", jsonData);
 
       console.log(colores.verde, 'Scrap exitoso\n');
     }else{
