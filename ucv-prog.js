@@ -16,7 +16,7 @@ const doScrap = async () => {
   try {
     const page = await browser.newPage();
 
-    const url = 'https://tvdaldia.cl/cartelera-tv/mega/';
+    const url = 'https://tvdaldia.cl/guia-tv/ucv-tv/';
 
     console.log(await browser.userAgent());
     await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36');
@@ -35,6 +35,8 @@ const doScrap = async () => {
       els => els.map(e => e.textContent)
     );
 
+    programas.pop();
+    horarios.pop();
     programas.pop();
     horarios.pop();
 
@@ -62,18 +64,13 @@ const doScrap = async () => {
         }
       }
 
-      programacion.push({id: 'mega', programa: programas[i], hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
-      programacion2.push({id: 'mega-2', programa: programas[i], hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
+      programacion.push({id: 'ucv', programa: programas[i], hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
     }
 
     if(programacion.length > 0){
 
       const jsonData = JSON.stringify(programacion);
-      fs.writeFileSync("/home/deltafoxtrot/"+"pelota9.json", jsonData);
-
-      const jsonData2 = JSON.stringify(programacion2);
-      fs.writeFileSync("/home/deltafoxtrot/"+"pelota9-2.json", jsonData2);
-
+      fs.writeFileSync("/home/deltafoxtrot/"+"ucv.json", jsonData);
 
       console.log(colores.verde, 'Scrap exitoso\n');
     }else{

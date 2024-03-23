@@ -16,7 +16,7 @@ const doScrap = async () => {
   try {
     const page = await browser.newPage();
 
-    const url = 'https://tvdaldia.cl/cartelera-tv/mega/';
+    const url = 'https://tvdaldia.cl/guia-tv/ntv/';
 
     console.log(await browser.userAgent());
     await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36');
@@ -40,7 +40,6 @@ const doScrap = async () => {
 
 
     let programacion = [];
-    let programacion2 = [];
 
     for (let i = 0; i < programas.length; i++) {
       let d = new Date();
@@ -56,24 +55,19 @@ const doScrap = async () => {
       n.setSeconds(0);
 
       if (d.getHours() >= n.getHours()) {
-        n.setHours(5);
+        n.setHours(4);
         if (d.getHours() < n.getHours()) {
           d.setDate(d.getDate() +1);
         }
       }
 
-      programacion.push({id: 'mega', programa: programas[i], hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
-      programacion2.push({id: 'mega-2', programa: programas[i], hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
+      programacion.push({id: 'ntv', programa: programas[i], hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
     }
 
     if(programacion.length > 0){
 
       const jsonData = JSON.stringify(programacion);
-      fs.writeFileSync("/home/deltafoxtrot/"+"pelota9.json", jsonData);
-
-      const jsonData2 = JSON.stringify(programacion2);
-      fs.writeFileSync("/home/deltafoxtrot/"+"pelota9-2.json", jsonData2);
-
+      fs.writeFileSync("/home/deltafoxtrot/"+"ntv.json", jsonData);
 
       console.log(colores.verde, 'Scrap exitoso\n');
     }else{

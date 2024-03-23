@@ -43,6 +43,8 @@ const doScrap = async () => {
 
     await new Promise(r => setTimeout(r, 10000));
 
+    console.log(interceptedURL);
+
     if (interceptedURL !== undefined) {
       fs.writeFileSync("/home/deltafoxtrot/ff9d5984ddf8923b9d4831314a412221.txt", interceptedURL);
     }
