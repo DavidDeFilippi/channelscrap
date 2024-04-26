@@ -58,7 +58,7 @@ const doScrap = async () => {
       n.setSeconds(0);
 
       if (d.getHours() >= n.getHours()) {
-        n.setHours(5);
+        n.setHours(4);
         if (d.getHours() < n.getHours()) {
           d.setDate(d.getDate() +1);
         }

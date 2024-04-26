@@ -30,7 +30,11 @@ const doScrap = async () => {
     console.log(token.data.authToken);
 
     if (token !== undefined) {
-      const urlFinal = 'https://origin.dpsgo.com/ssai/event/bFL1IVq9RNGlWQaqgiFuNw/master.m3u8?auth-token='+token.data.authToken;
+      const urlFinal = 'https://origin.dpsgo.com/ssai/event/bFL1IVq9RNGlWQaqgiFuNw/master.m3u8?auth-token=' + token.data.authToken;
+
+      console.log('\n');
+      console.log(urlFinal);
+
       fs.writeFileSync("/home/deltafoxtrot/2d769b8820669674c9551a46fdfe2515.txt", urlFinal);
     }
 
