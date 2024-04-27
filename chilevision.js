@@ -43,10 +43,24 @@ const doScrap = async () => {
 
     await new Promise(r => setTimeout(r, 10000));
 
-    console.log(interceptedURL);
+    console.log(interceptedURL+'\n\n');
 
     if (interceptedURL !== undefined) {
       fs.writeFileSync("/home/deltafoxtrot/ff9d5984ddf8923b9d4831314a412221.txt", interceptedURL);
+    }
+
+    await page.goto('https://www.chilevision.cl:8080/token.php/ms_player_src_01/live_1/63ee47e1daeeb80a30d98ef4/1702807971649.json', { waitUntil: 'load', timeout: 120000 });
+
+    const n = await page.$("pre");
+    let token = await (await n.getProperty('textContent')).jsonValue();
+    token = JSON.parse(token);
+
+    const chvStream = 'https://mdstrm.com/live-stream-playlist/63ee47e1daeeb80a30d98ef4.m3u8?access_token=' + token.token;
+
+    console.log(chvStream);
+    
+    if (token !== undefined) {
+      fs.writeFileSync("/home/deltafoxtrot/chvStream.txt", chvStream);
     }
 
     console.log(colores.verde, 'Scrap exitoso\n');
