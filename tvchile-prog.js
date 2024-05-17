@@ -80,7 +80,7 @@ const doScrap = async () => {
     console.log(colores.rojo, e);
   }
 
-  // await browser.close();
+  await browser.close();
 }
 
 doScrap();
