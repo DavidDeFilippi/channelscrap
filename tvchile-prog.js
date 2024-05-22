@@ -70,7 +70,7 @@ const doScrap = async () => {
     // console.log(JSONcontent);
 
     // if (interceptedURL !== undefined) {
-    //   fs.writeFileSync("/home/deltafoxtrot/3b9c2ebfbdd5a589c85d0e633c1f6ac8.txt", interceptedURL);
+    //   fs.writeFileSync("/home/deltafoxtrot/flytvtools/3b9c2ebfbdd5a589c85d0e633c1f6ac8.txt", interceptedURL);
     // }
 
     console.log(colores.verde, 'Scrap exitoso\n');
@@ -80,7 +80,7 @@ const doScrap = async () => {
     console.log(colores.rojo, e);
   }
 
-  await browser.close();
+    await browser.close();
 }
 
 doScrap();

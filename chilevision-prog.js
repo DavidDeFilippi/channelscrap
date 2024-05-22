@@ -63,7 +63,7 @@ const doScrap = async () => {
     if(programacion.length > 0){
       const jsonData = JSON.stringify(programacion);
 
-      fs.writeFileSync("/home/deltafoxtrot/"+"rtu.json", jsonData);
+      fs.writeFileSync("/home/deltafoxtrot/flytvtools/"+"rtu.json", jsonData);
 
       console.log(colores.verde, 'Scrap exitoso\n');
     }else{

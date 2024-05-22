@@ -45,7 +45,7 @@ const doScrap = async () => {
     await new Promise(r => setTimeout(r, 10000));
     
     if (interceptedURL !== undefined) {
-      fs.writeFileSync("/home/deltafoxtrot/b92e28c046a3d797104baef7a7494594.txt", interceptedURL);
+      fs.writeFileSync("/home/deltafoxtrot/flytvtools/b92e28c046a3d797104baef7a7494594.txt", interceptedURL);
     }
 
     console.log(colores.verde, 'Scrap exitoso\n');

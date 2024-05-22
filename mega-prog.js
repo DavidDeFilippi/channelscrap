@@ -69,10 +69,10 @@ const doScrap = async () => {
     if(programacion.length > 0){
 
       const jsonData = JSON.stringify(programacion);
-      fs.writeFileSync("/home/deltafoxtrot/"+"pelota9.json", jsonData);
+      fs.writeFileSync("/home/deltafoxtrot/flytvtools/"+"pelota9.json", jsonData);
 
       const jsonData2 = JSON.stringify(programacion2);
-      fs.writeFileSync("/home/deltafoxtrot/"+"pelota9-2.json", jsonData2);
+      fs.writeFileSync("/home/deltafoxtrot/flytvtools/"+"pelota9-2.json", jsonData2);
 
 
       console.log(colores.verde, 'Scrap exitoso\n');

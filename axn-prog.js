@@ -16,7 +16,7 @@ const doScrap = async () => {
   try {
     const page = await browser.newPage();
 
-    const url = 'https://tvdaldia.cl/cartelera-tv/tvn/';
+    const url = 'https://mi.tv/cl/canales/axn';
 
     console.log(await browser.userAgent());
     await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/85.0.4182.0 Safari/537.36');
@@ -24,20 +24,17 @@ const doScrap = async () => {
     await page.goto(url, { waitUntil: 'load', timeout: 50000 });
 
     await new Promise(r => setTimeout(r, 5000));
-    
+
     const programas = await page.$$eval(
-      "#programacion-hoy > div > div.cartelera-programa > div.cartelera-programa",
+      "#listings > ul > li > a > div.content > h2",
       els => els.map(e => e.textContent)
     );
 
     const horarios = await page.$$eval(
-      "#programacion-hoy > div > div.cartelera-programa > span.cartelera-hora",
+      "#listings > ul > li > a > div.content > span.time",
       els => els.map(e => e.textContent)
     );
-
-    programas.pop();
-    horarios.pop();
-
+    
     let programacion = [];
 
     for (let i = 0; i < programas.length; i++) {
@@ -46,27 +43,30 @@ const doScrap = async () => {
       d.setHours(Number(horaSplit[0]));
       d.setMinutes(Number(horaSplit[1]));
       d.setSeconds(0);
-      
+      // d = addHours(d, -1);
+
       let n = new Date();
       n.setDate(n.getDate() + 1);
       n.setHours(0);
       n.setMinutes(0);
       n.setSeconds(0);
-
+      
       if (d.getHours() >= n.getHours()) {
-        n.setHours(5);
+        n.setHours(6);
         if (d.getHours() < n.getHours()) {
           d.setDate(d.getDate() +1);
         }
       }
 
-      programacion.push({id: 'tvn', programa: programas[i], hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
+      programacion.push({id: 'axn', programa: programas[i].replace(/(\r\n|\n|\r|\t)/gm,""), hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
     }
 
+    // console.log(programacion);
+    
     if(programacion.length > 0){
       const jsonData = JSON.stringify(programacion);
 
-      fs.writeFileSync("/home/deltafoxtrot/flytvtools/"+"tbn7.json", jsonData);
+      fs.writeFileSync("/home/deltafoxtrot/flytvtools/"+"axn.json", jsonData);
 
       console.log(colores.verde, 'Scrap exitoso\n');
     }else{

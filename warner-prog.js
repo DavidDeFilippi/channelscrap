@@ -36,14 +36,13 @@ const doScrap = async () => {
     );
     
     let programacion = [];
-
     for (let i = 0; i < programas.length; i++) {
       let d = new Date();
       const horaSplit = horarios[i].split(':');
       d.setHours(Number(horaSplit[0]));
       d.setMinutes(Number(horaSplit[1]));
       d.setSeconds(0);
-      // d = addHours(d, -1);
+      d = addHours(d, 0, 20);
 
       let n = new Date();
       n.setDate(n.getDate() + 1);
@@ -61,12 +60,12 @@ const doScrap = async () => {
       programacion.push({id: 'warnerhd', programa: programas[i].replace(/(\r\n|\n|\r|\t)/gm,""), hora: d, horaNormal: new Date(d).toLocaleTimeString().slice(0, -3), updated: new Date().getTime()});
     }
 
-    // console.log(programacion);
+    console.log(programacion);
     
     if(programacion.length > 0){
       const jsonData = JSON.stringify(programacion);
 
-      fs.writeFileSync("/home/deltafoxtrot/"+"warnerhd.json", jsonData);
+      fs.writeFileSync("/home/deltafoxtrot/flytvtools/"+"warnerhd.json", jsonData);
 
       console.log(colores.verde, 'Scrap exitoso\n');
     }else{
@@ -83,8 +82,8 @@ const doScrap = async () => {
 
 doScrap();
 
-function addHours(date, hours) {
+function addHours(date, hours, minutes) {
   date.setTime(date.getTime() + hours * 60 * 60 * 1000);
-
+  date.setTime(date.getTime() + minutes*60000);
   return date;
 }

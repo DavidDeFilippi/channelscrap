@@ -35,7 +35,7 @@ const doScrap = async () => {
       console.log('\n');
       console.log(urlFinal);
 
-      fs.writeFileSync("/home/deltafoxtrot/2d769b8820669674c9551a46fdfe2515.txt", urlFinal);
+      fs.writeFileSync("/home/deltafoxtrot/flytvtools/2d769b8820669674c9551a46fdfe2515.txt", urlFinal);
     }
 
     console.log(colores.verde, 'Scrap exitoso\n');
